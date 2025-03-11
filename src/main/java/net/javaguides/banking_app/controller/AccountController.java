@@ -52,11 +52,12 @@ public class AccountController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Map<String,String>> updateSingleAccount(@PathVariable("id") long id) throws ResourceNotFound {
-        Account account = accountService.getAccount(id);
+    public ResponseEntity<Map<String,String>> updateSingleAccount(@RequestBody AccountDto payload , @PathVariable("id") long id) throws Exception {
+        accountService.updateAccount(payload,id);
 
         HashMap<String, String> response = new HashMap<>();
         response.put("message","account updated successfully");
+
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
