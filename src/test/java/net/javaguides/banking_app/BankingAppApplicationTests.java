@@ -9,7 +9,6 @@ import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(MockitoExtension.class)
-@TestPropertySource(properties = "spring.profiles.active=test")
 @AutoConfigureMockMvc
 class BankingAppApplicationTests {
 

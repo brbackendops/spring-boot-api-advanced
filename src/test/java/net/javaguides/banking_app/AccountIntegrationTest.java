@@ -2,6 +2,7 @@ package net.javaguides.banking_app;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
+import jakarta.transaction.Transactional;
 import net.javaguides.banking_app.dto.AccountDto;
 import net.javaguides.banking_app.entity.Account;
 import net.javaguides.banking_app.exception.ResourceNotFound;
@@ -16,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.stubbing.OngoingStubbing;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,13 +26,12 @@ import org.springframework.http.*;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
-import org.junit.jupiter.api.Assertions;
-
 import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(MockitoExtension.class)
-public class AccountTest extends BankingAppApplicationTests {
+@Transactional
+public class AccountIntegrationTest extends BankingAppApplicationTests {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
