@@ -1,0 +1,15 @@
+steps:
+  - label: "Build"
+    command: echo "Build the rocket"
+    key: build
+
+  - label: "Test"
+    command: echo "Start the Test"
+    key: test
+    depend_on: build
+
+  - label: "Deploy"
+    command: echo "Launch the rocket"
+    key: deploy
+    depend_on: test
+
